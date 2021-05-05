@@ -1,0 +1,63 @@
+<% if user_signed_in? %>
+
+<h1>Welcome to Dashboard</h1>
+  <div>Signed in with <%= current_user.email %></div>
+  <div>
+  <%= link_to 'Add new post', new_post_path, class: "btn btn-primary" %>
+  </div>  
+  <br>
+  <br>
+  <% 
+  def Date(date)
+  Date.parse(date.to_s).strftime('%m/%d/%Y')
+  end
+  %>
+  
+
+      <h3 style="text-align: center">Post LIST</h3>   
+     
+        <div style="text-align:right">   
+     
+        <%= link_to 'Add new post', new_post_path, class: "btn btn-primary" %>
+        </div>   
+        <br>   
+        <div class="total">
+      
+
+
+      
+  <table class="table">
+  <thead>
+    <tr>
+    <th scope="col">#</th>
+    <th scope="col">Title</th>
+    <th scope="col">Description</th>
+  
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% current_user.posts.each do |post| %>
+    <tr>   
+      
+      <td><%= post.title%></td>   
+      <td><%= post.body%></td>   
+      
+  
+      <td><%= Date(post.created_at)%> </td>
+       
+ 
+    </tr>   
+  <% end %>   
+  </tbody>
+  </table>
+      </div>   
+    </body>   
+  </html>  
+  
+  
+  
+  
+  
+<h1>Login to visit Dashboard Page</h1>
+<% end %>

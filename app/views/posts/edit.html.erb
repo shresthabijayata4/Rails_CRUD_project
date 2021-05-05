@@ -1,0 +1,16 @@
+
+
+
+<%= simple_form_for(@post, method: :put) do |f| %>
+    <%= f.label :Title %>
+    <%= f.input_field :title %><br><br>
+    <%= f.label :Description %>
+    <%= f.input_field :body %><br><br>
+    <%= f.label :Publish %>
+    <%= f.input_field :publish %><br><br>
+    <%= f.label :Coverpicture%>
+    <%= f.file_field :cover_filename %> <br>
+   
+    <%= f.submit 'Update Post' %>
+  <% end %>
+  <%= link_to 'Cancel', posts_path %>

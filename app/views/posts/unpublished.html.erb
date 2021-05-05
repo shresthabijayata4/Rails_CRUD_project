@@ -1,0 +1,70 @@
+
+<% def Date(date)
+Date.parse(date.to_s).strftime('%m/%d/%Y')
+end %>
+
+<% if user_signed_in? %>
+
+
+    
+  <h1>Welcome to Dashboard</h1>
+  <div>Signed in with <%= current_user.email %></div>
+  
+  <br>
+  <br>
+  <% 
+
+  %>
+  
+
+      <h3 style="text-align: center">Post List</h3>   
+     
+        <div style="text-align:right">   
+        
+        <%= link_to 'Add new post', new_post_path, class: "btn btn-primary" %>
+        </div>   
+        <br>   
+        <div class="total">
+      
+
+
+      
+  <table class="table">
+  <thead>
+    <tr>
+    <th scope="col">Image</th>
+    <th scope="col">Title</th>
+    <th scope="col">Description</th>
+    <th scope="col">Created Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @posts.each do |post| %>
+ 
+    <tr>   
+      <td><%= image_tag(post.cover_filename_url)%></td>  
+      <td><%= post.title%></td>   
+      <td><%= post.body%></td>   
+      
+  
+      <td><%= Date(post.created_at)%> </td>
+        <td>
+        
+        <%= link_to 'Show', post_path(post), class:"btn btn-success" %>   
+            <%= link_to 'Edit', edit_post_path(post), class: "btn btn-warning"%>   
+            <%= link_to 'Delete', post_path(post), class:"btn btn-danger", method: :delete %>
+        </td>
+ 
+    </tr> 
+
+  <% end %>   
+  </tbody>
+  </table>
+     
+
+<% else %>
+  
+
+  <h1>Login to visit Dashboard Page</h1>
+<% end %>
